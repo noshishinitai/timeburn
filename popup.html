@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TimeBurn</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container" id="container">
+      <div class="settings-panel" id="settingsPanel" style="display: none">
+        <h3 class="panel-title">⚙️ SETTINGS</h3>
+
+        <div class="settings-section">
+          <h4 class="section-title">Background</h4>
+          <label class="select-label">Color</label>
+          <select class="bg-select" id="bgSelect">
+            <option value="default">Default</option>
+            <option value="dark-blue">Dark Blue</option>
+            <option value="purple">Purple</option>
+            <option value="green">Green</option>
+            <option value="red">Red</option>
+          </select>
+          <div class="upload-section">
+            <input
+              type="file"
+              id="bgImageInput"
+              accept="image/*"
+              style="display: none"
+            />
+            <button class="upload-btn" id="uploadBtn">📁 Upload Image</button>
+            <button
+              class="clear-img-btn"
+              id="clearImgBtn"
+              style="display: none"
+            >
+              ✕ Clear Image
+            </button>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <h4 class="section-title">Tracked Platforms</h4>
+          <label class="checkbox-label">
+            <input
+              type="checkbox"
+              class="platform-toggle"
+              data-platform="axiom.trade"
+              checked
+            />
+            <span>AXIOM (axiom.trade)</span>
+          </label>
+          <label class="checkbox-label">
+            <input
+              type="checkbox"
+              class="platform-toggle"
+              data-platform="trade.padre.gg"
+            />
+            <span>TERMINAL (trade.padre.gg)</span>
+          </label>
+          <label class="checkbox-label">
+            <input
+              type="checkbox"
+              class="platform-toggle"
+              data-platform="gmgn.ai"
+            />
+            <span>GMGN (gmgn.ai)</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="stats-container" id="statsContainer">
+        <div class="stat-card" data-site="axiom.trade">
+          <div class="site-name">AXIOM</div>
+          <div class="time-display" id="time-axiom">0h 0m</div>
+        </div>
+
+        <div class="stat-card" data-site="trade.padre.gg" style="display: none">
+          <div class="site-name">TERMINAL</div>
+          <div class="time-display" id="time-terminal">0h 0m</div>
+        </div>
+
+        <div class="stat-card" data-site="gmgn.ai" style="display: none">
+          <div class="site-name">GMGN</div>
+          <div class="time-display" id="time-gmgn">0h 0m</div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <button class="reset-btn" id="resetBtn">RESET</button>
+        <button class="settings-btn" id="settingsBtn" title="Settings">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="12" cy="12" r="3"></circle>
+            <path
+              d="M12 1v2m0 18v2m9-11h2M1 12h2m15.364-6.364l1.414-1.414M5.636 18.364l1.414 1.414m0-12.728l1.414 1.414m10.608 10.608l1.414 1.414"
+            ></path>
+          </svg>
+        </button>
+      </footer>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,315 @@
+/* Steam-inspired dark theme */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  width: 300px;
+  color: #c7d5e0;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%);
+  padding: 10px;
+  position: relative;
+  transition: background 0.3s ease;
+  background-size: cover;
+  background-position: center;
+}
+
+.container.has-custom-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.container > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Background themes */
+.container[data-theme="dark-blue"] {
+  background: linear-gradient(135deg, #0f1923 0%, #1a3a52 100%);
+}
+
+.container[data-theme="purple"] {
+  background: linear-gradient(135deg, #1a0f2e 0%, #3d2a5c 100%);
+}
+
+.container[data-theme="green"] {
+  background: linear-gradient(135deg, #0f2314 0%, #1e4d2b 100%);
+}
+
+.container[data-theme="red"] {
+  background: linear-gradient(135deg, #2d0f0f 0%, #5c1f1f 100%);
+}
+
+.settings-btn {
+  background: rgba(102, 192, 244, 0.15);
+  border: 1px solid rgba(102, 192, 244, 0.3);
+  color: #66c0f4;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  font-size: 10px;
+}
+
+.settings-btn:hover {
+  background: rgba(102, 192, 244, 0.3);
+  border-color: #66c0f4;
+  box-shadow: 0 0 10px rgba(102, 192, 244, 0.3);
+}
+
+.settings-btn:hover svg {
+  transform: rotate(90deg);
+}
+
+.stats-container {
+  padding: 5px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.stat-card {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(102, 192, 244, 0.2);
+  border-radius: 4px;
+  padding: 12px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.stat-card:hover {
+  background: rgba(0, 0, 0, 0.6);
+  border-color: #66c0f4;
+}
+
+.site-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #b8b6b4;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.time-display {
+  font-size: 16px;
+  font-weight: 700;
+  color: #66c0f4;
+  text-shadow: 0 0 5px rgba(102, 192, 244, 0.3);
+  font-family: "Courier New", monospace;
+}
+
+/* Settings Panel */
+.settings-panel {
+  background: rgba(0, 0, 0, 0.95);
+  border: 1px solid rgba(102, 192, 244, 0.3);
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.panel-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #66c0f4;
+  margin: 0 0 15px 0;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.settings-section {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(102, 192, 244, 0.1);
+}
+
+.settings-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.section-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #8b9ba8;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.select-label {
+  display: block;
+  font-size: 11px;
+  color: #8b9ba8;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bg-select {
+  width: 100%;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(102, 192, 244, 0.3);
+  border-radius: 4px;
+  color: #c7d5e0;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 12px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.bg-select:hover {
+  border-color: #66c0f4;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.bg-select:focus {
+  outline: none;
+  border-color: #66c0f4;
+  box-shadow: 0 0 10px rgba(102, 192, 244, 0.3);
+}
+
+.bg-select option {
+  background: #1b2838;
+  color: #c7d5e0;
+  padding: 10px;
+}
+
+.upload-section {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+}
+
+.upload-btn,
+.clear-img-btn {
+  padding: 8px 12px;
+  background: rgba(102, 192, 244, 0.1);
+  border: 1px solid rgba(102, 192, 244, 0.3);
+  color: #66c0f4;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 11px;
+  transition: all 0.2s ease;
+}
+
+.upload-btn:hover,
+.clear-img-btn:hover {
+  background: rgba(102, 192, 244, 0.2);
+  border-color: #66c0f4;
+}
+
+.clear-img-btn {
+  background: rgba(194, 80, 80, 0.1);
+  border-color: rgba(194, 80, 80, 0.3);
+  color: #d95f5f;
+}
+
+.clear-img-btn:hover {
+  background: rgba(194, 80, 80, 0.2);
+  border-color: #d95f5f;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+  font-size: 12px;
+  color: #c7d5e0;
+  margin-bottom: 5px;
+}
+
+.checkbox-label:hover {
+  background: rgba(102, 192, 244, 0.1);
+}
+
+.checkbox-label input[type="checkbox"] {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+.checkbox-label span {
+  flex: 1;
+}
+
+.footer {
+  padding: 10px 0 5px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.reset-btn {
+  background: rgba(194, 80, 80, 0.15);
+  border: 1px solid rgba(194, 80, 80, 0.3);
+  color: #d95f5f;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.reset-btn:hover {
+  background: rgba(194, 80, 80, 0.25);
+  border-color: #d95f5f;
+}
+
+.reset-btn:active {
+  transform: scale(0.98);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(102, 192, 244, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 192, 244, 0.5);
+}
